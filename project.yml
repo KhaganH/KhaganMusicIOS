@@ -6,7 +6,7 @@ targets:
     type: application
     platform: iOS
     deploymentTarget: "17.0"
-    sources: [App, Domain, Data, Services, Presentation, Utilities]
+    sources: [App, Data, Services, Presentation, Utilities]
     settings:
       INFOPLIST_FILE: Info.plist
       PRODUCT_BUNDLE_IDENTIFIER: com.khagan.khaganmusic
