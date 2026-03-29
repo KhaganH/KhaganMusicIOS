@@ -40,7 +40,7 @@ struct NowPlayingView: View {
                         .aspectRatio(1, contentMode: .fit)
                         .padding(40)
                     
-                    if let song = viewModel.currentSong {
+                    if viewModel.currentSong != nil {
                         Image(systemName: "music.note")
                             .font(.system(size: 80))
                             .foregroundStyle(AppTheme.accentColor)

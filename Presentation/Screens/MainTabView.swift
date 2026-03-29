@@ -109,18 +109,3 @@ struct PlaylistView: View {
     }
 }
 
-// Placeholder for PlaylistDetailView
-struct PlaylistDetailView: View {
-    let playlist: Playlist
-    
-    var body: some View {
-        ZStack {
-            AppTheme.primaryBackground.ignoresSafeArea()
-            VStack {
-                Text("Playlist Detail for \(playlist.name)")
-                    .foregroundStyle(AppTheme.textColor)
-            }
-        }
-        .navigationTitle(playlist.name)
-    }
-}
