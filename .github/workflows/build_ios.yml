@@ -1,0 +1,47 @@
+name: Build KhaganMusic (No-Mac)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build iOS App
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: Install XcodeGen
+      run: brew install xcodegen
+      
+    - name: Generate Xcode Project
+      run: xcodegen generate
+      
+    - name: Build for iPhone (Unsigned)
+      run: |
+        xcodebuild -project KhaganMusic.xcodeproj \
+        -scheme KhaganMusic \
+        -configuration Release \
+        -sdk iphoneos \
+        -derivedDataPath build/derivedData \
+        CONFIGURATION_BUILD_DIR=build/Payload \
+        CODE_SIGNING_REQUIRED=NO \
+        CODE_SIGNING_ALLOWED=NO \
+        build
+        
+    - name: Prepare IPA
+      run: |
+        cd build
+        # Rename the app to the expected name if needed (optional)
+        mv Payload/KhaganMusic.app Payload/KhaganMusic.app
+        # Create Zip but call it .ipa
+        zip -r KhaganMusic.ipa Payload
+        
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: KhaganMusic-Installer
+        path: build/KhaganMusic.ipa

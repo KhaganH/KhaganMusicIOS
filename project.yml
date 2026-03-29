@@ -1,0 +1,15 @@
+name: KhaganMusic
+options:
+  bundleIdPrefix: com.khagan
+targets:
+  KhaganMusic:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources: [App, Domain, Data, Services, Presentation, Utilities]
+    settings:
+      INFOPLIST_FILE: Info.plist
+      PRODUCT_BUNDLE_IDENTIFIER: com.khagan.khaganmusic
+      ENABLE_USER_SCRIPT_SANDBOXING: NO
+      MARKETING_VERSION: 1.0.0
+      CURRENT_PROJECT_VERSION: 1
