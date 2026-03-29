@@ -35,8 +35,6 @@ jobs:
     - name: Prepare IPA
       run: |
         cd build
-        # Rename the app to the expected name if needed (optional)
-        mv Payload/KhaganMusic.app Payload/KhaganMusic.app
         # Create Zip but call it .ipa
         zip -r KhaganMusic.ipa Payload
         
