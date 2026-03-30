@@ -27,7 +27,6 @@ jobs:
         -configuration Release \
         -sdk iphoneos \
         -derivedDataPath build/derivedData \
-        CONFIGURATION_BUILD_DIR=build/Payload \
         CODE_SIGNING_REQUIRED=NO \
         CODE_SIGNING_ALLOWED=NO \
         build
@@ -35,7 +34,9 @@ jobs:
     - name: Prepare IPA
       run: |
         cd build
-        # Create Zip but call it .ipa
+        mkdir -p Payload
+        # Sideloadly requires only the .app folder inside the Payload folder
+        cp -r derivedData/Build/Products/Release-iphoneos/KhaganMusic.app Payload/
         zip -r KhaganMusic.ipa Payload
         
     - name: Upload Build Artifact
