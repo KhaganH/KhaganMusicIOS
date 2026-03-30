@@ -11,7 +11,7 @@ struct LibraryView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                AppTheme.primaryBackground.ignoresSafeArea()
+                AppTheme.backgroundGradient.ignoresSafeArea()
                 
                 VStack {
                     if songs.isEmpty {

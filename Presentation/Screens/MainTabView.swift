@@ -23,11 +23,17 @@ struct MainTabView: View {
                     }
                     .tag(0)
                 
+                DownloadView()
+                    .tabItem {
+                        Label("Download", systemImage: "arrow.down.circle.fill")
+                    }
+                    .tag(1)
+                
                 PlaylistView()
                     .tabItem {
                         Label("Playlists", systemImage: "text.badge.plus")
                     }
-                    .tag(1)
+                    .tag(2)
             }
             .accentColor(AppTheme.accentColor)
             
